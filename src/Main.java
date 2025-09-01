@@ -6,10 +6,11 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String str;
 
-        do{
+        while(true){
             do{
-                System.out.print("Enter number: ");
+                System.out.print("Enter first number: ");
                 str = scan.nextLine().trim();
+                if (str.isEmpty()) return;
             }while(!isNumber(str));
 
             double num1 = Double.parseDouble(str);
@@ -17,18 +18,41 @@ public class Main {
             do{
                 System.out.print("Enter operation: ");
                 str=scan.nextLine().trim();
+                if (str.isEmpty()) return;
             }while (!isOperationSymbol(str));
 
             char operation = str.charAt(0);
 
             do{
-                System.out.print("Enter operation: ");
+                System.out.print("Enter second number: ");
                 str=scan.nextLine().trim();
+                if (str.isEmpty()) return;
             }while (!isNumber(str));
 
             double num2 = Double.parseDouble(str);
+            double result=0;
+            switch (operation){
+                case '+':{
+                    result=num1+num2;
+                    break;
+                }
+                case '-':{
+                    result=num1-num2;
+                    break;
+                }
+                case '*':{
+                    result=num1*num2;
+                    break;
+                }
+                case '/':{
+                    result=num1/num2;
+                    break;
+                }
+            }
 
-        }while(!str.isEmpty());
+            System.out.println("Result: "+result+"\n");
+            result=0;
+        }
     }
 
     public static boolean isNumber(String str){
